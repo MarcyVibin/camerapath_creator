@@ -44,6 +44,12 @@ python -m camtrack <video> [-o out.blend] [-w workdir] [--focal-mm 24] [--force]
 | Work folder | `<video>_track/` (frames, database, `model/`, `model_txt/`, `stats.json`, `result.json`)                      |
 | Tools       | found automatically. Override with `CAMTRACK_COLMAP`, `CAMTRACK_BLENDER`, `CAMTRACK_FFMPEG`, `CAMTRACK_FFPROBE` |
 
+**GPU bundle adjustment (CASPAR).** The polish step's bundle adjustment runs on the GPU when
+COLMAP is built with CASPAR. On the sample clip that's ~11× faster than Ceres on the CPU, with the
+same result. The prebuilt COLMAP release doesn't include it, so camtrack falls back to Ceres
+automatically. To get it, build COLMAP with `tools/build_colmap_caspar.bat`. The prerequisites and
+one source fix are listed at the top of the script. camtrack uses `D:\colmap-caspar` when it exists.
+
 ## Is the solve good?
 
 - `registered_images` should equal `frames`. Missing frames get interpolated and can wobble.

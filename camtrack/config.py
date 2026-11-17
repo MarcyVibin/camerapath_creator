@@ -30,8 +30,10 @@ class Settings:
     refine_passes: tuple[float, ...] = (2.0, 1.0)   # max reprojection error (px) per polish pass
     min_track_len: int = 3
     force: bool = False                  # wipe workspace and redo every step
-    colmap: str = field(default_factory=lambda: _find(
-        "CAMTRACK_COLMAP", "colmap", [str(Path.home() / "Tools/COLMAP/bin/colmap.exe")]))
+    ba_backend: str = "CASPAR"           # GPU bundle adjustment in polish; falls back to CERES if unsupported
+    # own build with CUDA + CASPAR first (see USAGE.md), then the prebuilt release
+    colmap: str = field(default_factory=lambda: _find("CAMTRACK_COLMAP", "colmap", [
+        r"D:\colmap-caspar\bin\colmap.exe", str(Path.home() / "Tools/COLMAP/bin/colmap.exe")]))
     blender: str = field(default_factory=lambda: _find("CAMTRACK_BLENDER", "blender", _blender_candidates()))
     ffmpeg: str = field(default_factory=lambda: _find("CAMTRACK_FFMPEG", "ffmpeg", []))
     ffprobe: str = field(default_factory=lambda: _find("CAMTRACK_FFPROBE", "ffprobe", []))
