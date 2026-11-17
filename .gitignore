@@ -1,3 +1,9 @@
+*.mp4
+*.blend
+*_track
+old
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
