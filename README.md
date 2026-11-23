@@ -166,7 +166,7 @@ and quality checks, see [USAGE.md](USAGE.md).
 
 ## License
 
-Distributed under the GNU General Public License v3.0 (GPL-3.0). See `LICENSE` for more information.
+Distributed under the GNU General Public License v3.0 (GPL-3.0). See [LICENSE](LICENSE) for more information.
 
 ---
 
